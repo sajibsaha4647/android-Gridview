@@ -19,7 +19,7 @@ class CustomAdapter extends BaseAdapter {
 
         this.context = mainActivity;
         this.flags = flags;
-        this.countryname = countryname
+        this.countryname = countryname;
 
     }
 
@@ -44,11 +44,13 @@ class CustomAdapter extends BaseAdapter {
         if(convertView == null){
                 inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
                 convertView =  inflater.inflate(R.layout.sample_view,parent,false);
-
         }
             ImageView imageView = convertView.findViewById(R.id.imageViewId);
             TextView textView = convertView.findViewById(R.id.newsimple);
 
-        return null;
+            imageView.setImageResource(flags[position]);
+            textView.setText(countryname[position]);
+
+        return convertView;
     }
 }

@@ -3,7 +3,10 @@ package com.example.androidgridview;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +30,16 @@ public class MainActivity extends AppCompatActivity {
 
         CustomAdapter adapter = new CustomAdapter(MainActivity.this,Countryname,Flags);
         gridView.setAdapter(adapter);
+
+        gridView.setVerticalScrollBarEnabled(false);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String value = Countryname[i];
+                Toast.makeText(MainActivity.this,value,Toast.LENGTH_LONG).show();
+            }
+        });
 
 
     }
